@@ -1,0 +1,27 @@
+Published here are the crypto challenges for the 2010 CSAW Application CTF as
+described on the Gotham Digital Science blog [1].  There are a few modules that
+this source relies on, noted under Dependencies below.
+
+To run these challenges, simply:
+
+    $ python csaw_qualifying.py
+
+or
+
+    $ python csaw_finals.py
+
+
+Notes:
+When running the final challenge, on startup it will ask for a password to
+generate the keys.  If you enter a different password each time, the challenge
+flag will be different as well.  If you wish to have the flag, make sure that
+you enter the same password at startup.
+
+
+Dependencies:
+* CherryPy Framework [http://www.cherrypy.org/]
+* PyCrypto [http://www.dlitz.net/software/pycrypto/]
+
+
+References:
+[1] http://www.gdssecurity.com/l/b/2010/10/06/crypto-challenges-at-the-csaw-2010-application-ctf-qualifying-round/
