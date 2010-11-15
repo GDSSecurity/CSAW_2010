@@ -4,7 +4,6 @@
 CSAW 2010 Cryptography Challenges
 """
 from Crypto.Cipher import AES, DES
-from M2Crypto.util import pkcs7_pad
 import base64
 import cherrypy
 import hashlib
@@ -56,6 +55,17 @@ class IllegalBlockSizeError(Exception):
         self.length = blocksize
     def __str__(self):
         return 'Input length must be multiple of %d when decrypting with padded cipher' % self.length
+
+
+def pkcs7_pad(data, blklen):
+    # This is from M2Crypto.util:
+    # http://websvn.osafoundation.org/filedetails.php?repname=m2crypto&path=%2Ftrunk%2FM2Crypto%2Futil.py
+
+    if blklen > 255:
+        raise ValueError("Illegal block size")
+
+    pad = (blklen - (len(data) % blklen))
+    return data + chr(pad) * pad
 
 
 def sign_then_aes_decrypt(ctext, aes_key, hmac_key, codec='base64'):
